@@ -70,12 +70,15 @@ export default class App extends React.Component<{}, State> {
     return (
       <div className="App">
         <header className="App-header">
-          <Title title={this.title} />
-          {/* <p>{this.state.editMode ? 'true' : 'false'}</p> */}
-          <button 
-            onClick={() => this.toggleEdit()}>
-            {this.state.editMode ? 'Finish' : 'Add Task'}
-          </button>
+          <div className="HeaderContainer">
+            <Title title={this.title} />
+            {/* <p>{this.state.editMode ? 'true' : 'false'}</p> */}
+            <button 
+              onClick={() => this.toggleEdit()}>
+              {this.state.editMode ? 'Finish' : 'Add Task'}
+            </button>
+
+          </div>
           {
             this.state.editMode && 
               <AddTaskPanel 

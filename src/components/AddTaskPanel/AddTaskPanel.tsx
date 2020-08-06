@@ -17,6 +17,10 @@ const AddTaskPanel: React.FunctionComponent<{
     }
 
     const createTodo = () => {
+        if (todo.task === '') {
+            alert("Please enter a value")
+            return
+        }
         props.onCreateTask(todo)
     }
 
@@ -35,12 +39,13 @@ const AddTaskPanel: React.FunctionComponent<{
     }
     return (
         <div className="Container AddTaskPanel">
-            <p>
-                {"Task:"} &nbsp;
-            </p>
+            <p className="FieldLabel">{"Task Name: "} &nbsp;</p>
             <input type="text" onChange={inputChange} name="task_input"/>
+            <p className="FieldLabel">{"Is Done? "} &nbsp;</p>
             <input type="checkbox" onChange={inputChange} name="done_input"/>
-            <button onClick={createTodo}>{"Create"}</button>
+            <button onClick={createTodo}>
+                {"Create"}
+            </button>
         </div>
     )
 };
