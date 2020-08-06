@@ -4,6 +4,7 @@ import Todo from "./modals/Todo";
 
 import Title from './components/Title/Title';
 import TodoItem from './components/TodoItem/TodoItem';
+import AddTaskPanel from './components/AddTaskPanel/AddTaskPanel';
 
 
 
@@ -49,6 +50,11 @@ export default class App extends React.Component<{}, State> {
     })
   }
 
+  addTask(todo: Todo){
+    console.log(todo);
+    
+  }
+
   render(){
     return (
       <div className="App">
@@ -59,12 +65,14 @@ export default class App extends React.Component<{}, State> {
             onClick={() => this.toggleEdit()}>
             {this.state.editMode ? 'Finish' : 'Add Task'}
           </button>
-
-          <div className="TodosContainer">
+          {
+            this.state.editMode && <AddTaskPanel onCreateTask={this.addTask}/>
+          }
+          <div className="Container TodosContainer">
             <p>All Todos</p>
             { 
               this.state.todos.map(todo => {
-                return <TodoItem todo={todo} />
+                return <TodoItem todo={todo} key={todo.id}/>
               }) 
             }
 

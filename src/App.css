@@ -36,11 +36,17 @@
     transform: rotate(360deg);
   }
 }
-.TodosContainer{
+.Container{
   border: wheat 1px solid;
   padding: 0.5rem 2rem 2rem 2rem;
+}
+.TodosContainer{
   margin-top: 6rem;
 }
 .TodosContainer>p{
   color: #b4dde9;
+}
+.AddTaskPanel{
+  margin-top: 4rem;
+  display: grid;
 }
