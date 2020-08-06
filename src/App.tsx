@@ -1,6 +1,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import Todo from "./modals/Todo";
+import { generateId } from "./utils/generateUniqueId"
 
 import Title from './components/Title/Title';
 import TodoItem from './components/TodoItem/TodoItem';
@@ -51,8 +52,12 @@ export default class App extends React.Component<{}, State> {
   }
 
   addTask(todo: Todo){
+    todo.id = generateId()
     console.log(todo);
-    
+    this.setState({
+      todos: this.state.todos.concat(todo),
+      editMode: false
+    })
   }
 
   render(){
@@ -66,7 +71,10 @@ export default class App extends React.Component<{}, State> {
             {this.state.editMode ? 'Finish' : 'Add Task'}
           </button>
           {
-            this.state.editMode && <AddTaskPanel onCreateTask={this.addTask}/>
+            this.state.editMode && 
+              <AddTaskPanel 
+                onCreateTask={(todo: Todo) => this.addTask(todo)} 
+              />
           }
           <div className="Container TodosContainer">
             <p>All Todos</p>
