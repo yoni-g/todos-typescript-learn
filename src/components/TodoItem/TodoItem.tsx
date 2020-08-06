@@ -12,13 +12,13 @@ const TodoItem: React.FunctionComponent<{
   return (
     <div>
         <p>
-            {props.todo.task}
+            {props.todo.task} &nbsp;
+            <input 
+                type="checkbox"
+                checked={props.todo.done}
+                disabled
+            />
         </p>
-        <input 
-            type="checkbox" 
-            value={props.todo.done ? 1 : 0}
-            disabled 
-        />
     </div>
   )
 };

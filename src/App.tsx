@@ -16,7 +16,8 @@ import './App.css';
 // }
 
 interface State {
-  todos: Todo[];
+  todos: Todo[],
+  editMode: boolean
 };
 
 export default class App extends React.Component<{}, State> {
@@ -24,6 +25,7 @@ export default class App extends React.Component<{}, State> {
   title: string = 'My Todos'
 
   state: State = {
+    editMode: false,
     todos: [{
       id: "qwerqwer",
       task: "make a react app!",
@@ -41,11 +43,22 @@ export default class App extends React.Component<{}, State> {
     }]
   };
 
+  toggleEdit(){
+    this.setState({
+      editMode: !this.state.editMode
+    })
+  }
+
   render(){
     return (
       <div className="App">
         <header className="App-header">
           <Title title={this.title} />
+          {/* <p>{this.state.editMode ? 'true' : 'false'}</p> */}
+          <button 
+            onClick={() => this.toggleEdit()}>
+            Add Task
+          </button>
           { 
             this.state.todos.map(todo => {
               return <TodoItem todo={todo} />
