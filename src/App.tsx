@@ -62,7 +62,7 @@ export default class App extends React.Component<{}, State> {
 
   deleteTask(taskId: string){
     this.setState({
-      todos: this.state.todos.filter(todo => todo.id != taskId)
+      todos: this.state.todos.filter(todo => todo.id !== taskId)
     })
   }
 
