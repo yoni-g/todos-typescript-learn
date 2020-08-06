@@ -2,11 +2,13 @@ import * as React from 'react';
 
 import Todo from "../../modals/Todo";
 
-interface TodoProps {
-  todo: Todo;
-}
+// interface TodoProps {
+//   todo: Todo;
+// }
 
-const TodoItem: React.FunctionComponent<TodoProps> = (props) => {
+const TodoItem: React.FunctionComponent<{
+    todo: Todo;
+}> = (props) => {
   return (
     <div>
         <p>
