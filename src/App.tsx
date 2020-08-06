@@ -57,13 +57,18 @@ export default class App extends React.Component<{}, State> {
           {/* <p>{this.state.editMode ? 'true' : 'false'}</p> */}
           <button 
             onClick={() => this.toggleEdit()}>
-            Add Task
+            {this.state.editMode ? 'Finish' : 'Add Task'}
           </button>
-          { 
-            this.state.todos.map(todo => {
-              return <TodoItem todo={todo} />
-            }) 
-          }
+
+          <div className="TodosContainer">
+            <p>All Todos</p>
+            { 
+              this.state.todos.map(todo => {
+                return <TodoItem todo={todo} />
+              }) 
+            }
+
+          </div>
   
         </header>
       </div>

@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.TodosContainer{
+  border: wheat 1px solid;
+  padding: 0.5rem 2rem 2rem 2rem;
+  margin-top: 6rem;
+}
+.TodosContainer>p{
+  color: #b4dde9;
+}
