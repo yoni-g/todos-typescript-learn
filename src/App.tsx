@@ -60,6 +60,12 @@ export default class App extends React.Component<{}, State> {
     })
   }
 
+  deleteTask(taskId: string){
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id != taskId)
+    })
+  }
+
   render(){
     return (
       <div className="App">
@@ -80,7 +86,13 @@ export default class App extends React.Component<{}, State> {
             <p>All Todos</p>
             { 
               this.state.todos.map(todo => {
-                return <TodoItem todo={todo} key={todo.id}/>
+                return (
+                  <TodoItem 
+                    todo={todo} 
+                    onDelete={(id:string) => this.deleteTask(id)}
+                    key={todo.id}
+                  />
+                )
               }) 
             }
 
