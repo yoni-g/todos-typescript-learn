@@ -4,9 +4,6 @@ import Todo from "../../modals/Todo";
 
 import TodoItem from '../TodoItem/TodoItem';
 
-// interface TodoProps {
-//   todo: Todo;
-// }
 
 const TodosList: React.FunctionComponent<{
     todoItems: Todo[],
@@ -14,20 +11,16 @@ const TodosList: React.FunctionComponent<{
 }> = (props) => {
 
     return (
-
         <div className="Container TodosContainer">
             <p>All Todos</p>
-            { props.todoItems.map(todo => (
-                    <TodoItem 
-                        todo={todo} 
-                        onDelete={(id:string) => props.deleteTask(id)}
-                        key={todo.id}
-                    />
-                )
+            { props.todoItems.map(todo => 
+                <TodoItem 
+                    todo={todo} 
+                    onDelete={(id:string) => props.deleteTask(id)}
+                    key={todo.id}
+                />
             )}
-
         </div>
-
     )
 };
 
