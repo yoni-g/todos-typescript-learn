@@ -1,4 +1,5 @@
 import React from 'react';
+// import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 // import logo from './logo.svg';
 import Todo from "./modals/Todo";
 import { generateId } from "./utils/generateUniqueId"
@@ -10,6 +11,7 @@ import AddTaskPanel from './components/AddTaskPanel/AddTaskPanel';
 
 
 import './App.css';
+import TodosList from './components/TodosList/TodosList';
 
 // const title: string = 'My Todos'
 
@@ -85,21 +87,10 @@ export default class App extends React.Component<{}, State> {
                 onCreateTask={(todo: Todo) => this.addTask(todo)} 
               />
           }
-          <div className="Container TodosContainer">
-            <p>All Todos</p>
-            { 
-              this.state.todos.map(todo => {
-                return (
-                  <TodoItem 
-                    todo={todo} 
-                    onDelete={(id:string) => this.deleteTask(id)}
-                    key={todo.id}
-                  />
-                )
-              }) 
-            }
-
-          </div>
+          <TodosList 
+            todoItems={this.state.todos}
+            deleteTask={(id: string) => this.deleteTask(id)}
+          />
   
         </header>
       </div>
