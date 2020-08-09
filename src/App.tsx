@@ -1,17 +1,12 @@
 import React from 'react';
-// import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
-import Todo from "./modals/Todo";
-import { generateId } from "./utils/generateUniqueId"
-
-import Title from './components/Title/Title';
-import TodoItem from './components/TodoItem/TodoItem';
-import AddTaskPanel from './components/AddTaskPanel/AddTaskPanel';
+// import Todo from "./modals/Todo";
 
 
 
 import './App.css';
-import TodosList from './components/TodosList/TodosList';
+import TodoPage from './pages/TodoContainer';
 
 // const title: string = 'My Todos'
 
@@ -19,81 +14,63 @@ import TodosList from './components/TodosList/TodosList';
 //   title: string
 // }
 
-interface State {
-  todos: Todo[],
-  editMode: boolean
-};
 
-export default class App extends React.Component<{}, State> {
+export default class App extends React.Component<{}, {}> {
 
-  title: string = 'My Todos'
+  appTitle: string = 'My tiny TS app'
 
-  state: State = {
-    editMode: false,
-    todos: [{
-      id: "qwerqwer",
-      task: "make a react app!",
-      done: false
-    },
-    {
-      id: "qwerqwer2",
-      task: "make a iOS app!",
-      done: true
-    },
-    {
-      id: "qwerqwer3",
-      task: "make a react-native app!",
-      done: false
-    }]
-  };
+  // state: State = {
+  //   editMode: false,
+  //   todos: [{
+  //     id: "qwerqwer",
+  //     task: "make a react app!",
+  //     done: false
+  //   },
+  //   {
+  //     id: "qwerqwer2",
+  //     task: "make a iOS app!",
+  //     done: true
+  //   },
+  //   {
+  //     id: "qwerqwer3",
+  //     task: "make a react-native app!",
+  //     done: false
+  //   }]
+  // };
 
-  toggleEdit(){
-    this.setState({
-      editMode: !this.state.editMode
-    })
-  }
+  // toggleEdit(){
+  //   this.setState({
+  //     editMode: !this.state.editMode
+  //   })
+  // }
 
-  addTask(todo: Todo){
-    todo.id = generateId()
-    console.log(todo);
-    this.setState({
-      todos: this.state.todos.concat(todo),
-      editMode: false
-    })
-  }
+  // addTask(todo: Todo){
+  //   todo.id = generateId()
+  //   console.log(todo);
+  //   this.setState({
+  //     todos: this.state.todos.concat(todo),
+  //     editMode: false
+  //   })
+  // }
 
-  deleteTask(taskId: string){
-    this.setState({
-      todos: this.state.todos.filter(todo => todo.id !== taskId)
-    })
-  }
+  // deleteTask(taskId: string){
+  //   this.setState({
+  //     todos: this.state.todos.filter(todo => todo.id !== taskId)
+  //   })
+  // }
 
   render(){
     return (
-      <div className="App">
-        <header className="App-header">
-          <div className="HeaderContainer">
-            <Title title={this.title} />
-            {/* <p>{this.state.editMode ? 'true' : 'false'}</p> */}
-            <button 
-              onClick={() => this.toggleEdit()}>
-              {this.state.editMode ? 'Finish' : 'Add Task'}
-            </button>
-
-          </div>
-          {
-            this.state.editMode && 
-              <AddTaskPanel 
-                onCreateTask={(todo: Todo) => this.addTask(todo)} 
-              />
-          }
-          <TodosList 
-            todoItems={this.state.todos}
-            deleteTask={(id: string) => this.deleteTask(id)}
-          />
-  
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+          <Link to="/">Home</Link> | <Link to="/todos">Todo List</Link> | <Link to="/weather">Check weather</Link>
+          <header className="App-header">
+              <Route exact path="/" render={() => <h3>{this.appTitle}</h3> }/>
+              <Route exact path="/todos" component={TodoPage} />
+              <Route exact path="/weather" component={() => <h3>{"We are working on it 👨‍💻"}</h3> } />
+          </header>
+        </div>
+      </Router>
     );
 
   }
