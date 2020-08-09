@@ -10,14 +10,10 @@ const AddTaskPanel: React.FunctionComponent<{
     onCreateTask: (todo: Todo) => void
 }> = (props) => {
 
-    var todo: Todo = {
-        id:'',
-        task:'',
-        done:false
-    }
+    var todo: Todo = {} as any
 
     const createTodo = () => {
-        if (todo.task === '') {
+        if (!todo.task) {
             alert("Please enter a value")
             return
         }
