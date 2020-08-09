@@ -10,19 +10,19 @@ import AddTaskPanel from '../components/AddTaskPanel/AddTaskPanel';
 
 
 
-// import './TodoContainer.css';
+import './TodoContainer.css';
 import TodosList from '../components/TodosList/TodosList';
 
-interface State {
+interface TodoState {
   todos: Todo[],
   editMode: boolean
 };
   
-export default class TodoPage extends React.Component<{}, State> {
+export default class TodoPage extends React.Component<{}, TodoState> {
   
     title: string = 'My Todos'
   
-    state: State = {
+    state: TodoState = {
       editMode: false,
       todos: [{
         id: "qwerqwer",

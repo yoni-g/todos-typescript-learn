@@ -63,3 +63,7 @@ p.FieldLabel{
 .AddTaskPanel>button{
   margin-top: 1rem;
 }
+.App-nav{
+  height: 32px;
+  background-color: #cacaca;
+}
