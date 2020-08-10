@@ -8,6 +8,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import TodoPage from './pages/TodoContainer';
 import Navbar from './components/Navbar/Navbar';
+import HomePage from './pages/HomeContainer';
 
 // const title: string = 'My Todos'
 
@@ -17,19 +18,19 @@ import Navbar from './components/Navbar/Navbar';
 
 
 export default class App extends React.Component<{}, {}> {
-
-  appTitle: string = 'My tiny TS app'
   
   render(){
     return (
       <Router>
         <div className="App">
-          <Navbar />
           <header className="App-header">
-              <Route exact path="/" render={() => <h3>{this.appTitle}</h3> }/>
-              <Route exact path="/todos" component={TodoPage} />
-              <Route exact path="/weather" component={() => <h3>{"We are working on it 👨‍💻"}</h3> } />
+            <Navbar />
           </header>
+          <div className="App-body">
+              <Route exact path="/" component={HomePage} />
+              <Route path="/todos" component={TodoPage} />
+              <Route path="/weather" component={() => <h3>{"We are working on it 👨‍💻"}</h3>} />
+          </div>
         </div>
       </Router>
     );

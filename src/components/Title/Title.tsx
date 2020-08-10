@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Title: React.FunctionComponent<Props> = (props) => {
-  return <h1>{props.title}</h1>;
+  return <h3>{props.title}</h3>;
 };
 
 export default Title;
