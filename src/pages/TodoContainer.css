@@ -1,0 +1,14 @@
+.TodoContainer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.TodoContainer-row{
+    flex-direction: row;
+    flex-grow: 1;
+    /* order: 1; */
+}
+.TodoContainer-col{
+    flex-grow: 2;
+    text-align: -webkit-center;
+}

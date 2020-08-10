@@ -9,7 +9,7 @@ export default class HomePage extends React.Component<{}, {}> {
         return (
             <>
                 <Title title={this.homeTitle} />
-                <p>{"Having some fun with react+Typesciprt"}</p>
+                <p>{"Having some fun with reactJS+Typesciprt"}</p>
             </>
         )
     }
