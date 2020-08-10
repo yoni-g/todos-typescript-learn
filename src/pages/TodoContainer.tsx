@@ -68,23 +68,21 @@ export default class TodoPage extends React.Component<{}, TodoState> {
           <header className="TodoContainer-header">
             <div className="HeaderContainer">
               <Title title={this.title} />
-              {/* <p>{this.state.editMode ? 'true' : 'false'}</p> */}
-              <button 
-                onClick={() => this.toggleEdit()}>
+              <button onClick={() => this.toggleEdit()}>
                 {this.state.editMode ? 'Finish' : 'Add Task'}
               </button>
-  
             </div>
-            {
-              this.state.editMode && 
+            { this.state.editMode && 
                 <AddTaskPanel 
                   onCreateTask={(todo: Todo) => this.addTask(todo)} 
                 />
             }
-            <TodosList 
-              todoItems={this.state.todos}
-              deleteTask={(id: string) => this.deleteTask(id)}
-            />
+            { this.state.todos.length > 0 &&
+                <TodosList 
+                  todoItems={this.state.todos}
+                  deleteTask={(id: string) => this.deleteTask(id)}
+                />
+            }
     
           </header>
         </div>
