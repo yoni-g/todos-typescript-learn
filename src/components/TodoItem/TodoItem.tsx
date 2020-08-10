@@ -21,6 +21,11 @@ const TodoItem: React.FunctionComponent<{
     const floatRight: CSS.Properties = {
         float: 'right',
     }
+    const clearButton: CSS.Properties = {
+        border: '0',
+        backgroundColor: 'Transparent'
+    }
+
     return (
         <div>
             <p style={todoItemStyle}>
@@ -30,9 +35,11 @@ const TodoItem: React.FunctionComponent<{
                         checked={props.todo.done}
                         disabled
                     />
-                    <a onClick={deleteTask}>
+                    <button 
+                        style={clearButton} 
+                        onClick={deleteTask}>
                         🗑
-                    </a>
+                    </button>
                 </div>
             </p>
         </div>
