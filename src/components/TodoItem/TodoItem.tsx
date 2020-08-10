@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as CSS from 'csstype';
 
 import Todo from "../../modals/Todo";
 
@@ -14,17 +15,25 @@ const TodoItem: React.FunctionComponent<{
     const deleteTask = () => {
         props.onDelete(props.todo.id)
     }
-
+    const todoItemStyle: CSS.Properties = {
+        textAlign: 'justify',
+    }
+    const floatRight: CSS.Properties = {
+        float: 'right',
+    }
     return (
         <div>
-            <p>
+            <p style={todoItemStyle}>
                 {props.todo.task} &nbsp;
-                <input 
-                    type="checkbox"
-                    checked={props.todo.done}
-                    disabled
-                />
-                <button onClick={deleteTask}>X</button>
+                <div style={floatRight}>
+                    <input type="checkbox"
+                        checked={props.todo.done}
+                        disabled
+                    />
+                    <a onClick={deleteTask}>
+                        🗑
+                    </a>
+                </div>
             </p>
         </div>
     )
